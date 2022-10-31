@@ -1,6 +1,6 @@
 ﻿:root {
     --header-height: 3rem;
-    --nav-width: 68px;
+    --nav-width: 66px;
     --first-color: #930000;
     --first-color-light: #AFA5D9;
     --white-color: #F7F6FB;
@@ -110,7 +110,7 @@ a {
 
 .nav_link {
     position: relative;
-    color: var(--first-color-light);
+    color: #000;
     margin-bottom: 1.5rem;
     transition: .3s
 }

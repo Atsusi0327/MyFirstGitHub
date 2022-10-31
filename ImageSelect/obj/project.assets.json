@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\1111004\\source\\repos\\ImageSelect\\ImageSelect.csproj",
+      "projectUniqueName": "C:\\Users\\1111004\\Documents\\GitHub\\MyFirstGitHub\\ImageSelect\\ImageSelect.csproj",
       "projectName": "ImageSelect",
-      "projectPath": "C:\\Users\\1111004\\source\\repos\\ImageSelect\\ImageSelect.csproj",
+      "projectPath": "C:\\Users\\1111004\\Documents\\GitHub\\MyFirstGitHub\\ImageSelect\\ImageSelect.csproj",
       "packagesPath": "C:\\Users\\1111004\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\1111004\\source\\repos\\ImageSelect\\obj\\",
+      "outputPath": "C:\\Users\\1111004\\Documents\\GitHub\\MyFirstGitHub\\ImageSelect\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

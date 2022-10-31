@@ -34,11 +34,11 @@
                     <span class="nav_logo-name">雙鶴集團</span>
                 </a>
                 <div class="nav_list">
-                    <a asp-action="Privacy" class="nav_link active">
+                    <a asp-action="Index" class="nav_link">
                         <i class='bx bx-grid-alt nav_icon'></i>
-                        <span class="nav_name">Dashboard</span>
+                        <span class="nav_name">首頁</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a asp-action="Privacy" class="nav_link">
                         <i class='bx bx-user nav_icon'></i>
                         <span class="nav_name">Users</span>
                     </a>
@@ -59,7 +59,7 @@
                         <span class="nav_name">Stats</span>
                     </a>
                 </div>
-            </div> 
+            </div>
             <a href="#" class="nav_link">
                 <i class='bx bx-log-out nav_icon'></i>
                 <span class="nav_name">SignOut</span>
@@ -68,16 +68,14 @@
     </div>
     <!--Container Main start-->
     <div class="height-100 w-100 bg-light">
-        <frame name="_main">
-            @RenderBody()
-        </frame>
+        @RenderBody()
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/sidebar.js" asp-append-version="true"></script>
 
     <!-- Custom -->
+    <script src="~/js/sidebar.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
