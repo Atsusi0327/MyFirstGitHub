@@ -1,1 +1,0 @@
-ngrok http https://localhost:8080 --host-header=localhost:8080

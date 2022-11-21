@@ -1,0 +1,78 @@
+﻿@{
+
+}
+<head>
+</head>
+
+<body>
+
+    <div class="row g-2 mb-3">
+        <select class="form-select col-auto w-50" id="Sel-BotList">
+            <option>請選擇欲使用之機器人</option>
+        </select>
+        <select class="form-select col-auto w-50" id="Sel-Bcst" onchange="MessageType(this)">
+            <option value="reset" selected>請選擇廣播類型</option>
+            <option value="text">訊息</option>
+        </select>
+    </div>
+    <div class="container-fluid hide" id="Msg-Content1">
+        <p>說明：LINE並無開放顏文字及貼圖功能，如需使用請至<a href="https://manager.line.biz/">LINE 官網</a>使用。</p>
+        <div class="form-floating">
+            <textarea class="form-control" style="height:300px" id="Msg-Message-Content"></textarea>
+            <label for="floatingTextarea">請輸入廣播內容</label>
+        </div>
+        <input class="btn btn-secondary" type="button" id="Msg-Message-Submit" style="width:100%" onclick="SendBroadcast()" value="送出" />
+    </div>
+    <!---------------------------------------------------------------------------------------------------------->
+    <script src="~/js/LineBotIndex.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "/LineBot/GetBotList",
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    for (let i = 0; i < result.length; i++) {
+                        $('#Sel-BotList').append("<option value='" + result[i].id + "'>" + result[i].name + "</option>");
+                    }
+                },
+                error: function () {
+                }
+            });
+        });
+        function MessageType(a) {
+            switch (a.value) {
+                case 'reset': {
+                     $('#Msg-Content1').css('display','');
+                     break;
+                }
+                case 'text': {
+                     $('#Msg-Content1').show();
+                    console.log('message');
+                    break;
+                }
+            } 
+        }
+        function SendBroadcast () {
+            switch ($('#Sel-Bcst').val()) {
+                case 'text' : {
+                    //alert('');
+                    var TextContent = $('#Msg-Message-Content').val().toString();
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/LineBotSet/SendMessage/Broadcast",
+                        //url: "/LineBot/Broadcast",
+                        data: "messageType=" + $('#Sel-Bcst').val(),
+                        dataType: "Json",
+                        processData: true,
+                        success: function () {},
+                        error: function () {}
+                    });
+                    break;
+                }
+            }
+        }
+    </script>
+</body>

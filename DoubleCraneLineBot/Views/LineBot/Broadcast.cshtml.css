@@ -1,0 +1,10 @@
+﻿p {
+    color:gray;
+}
+.hide {
+    display: none;
+}
+
+.show {
+    display: initial;
+}
