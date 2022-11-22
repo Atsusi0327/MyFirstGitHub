@@ -4,6 +4,9 @@ using DoubleCraneLineBot.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using DoubleCraneLineBot.LineBot.Domain;
+using DoubleCraneLineBot.LineBot.Dtos;
+using DoubleCraneLineBot.LineBot.Enum;
+using DoubleCraneLineBot.LineBot.Providers;
 
 
 namespace DoubleCraneLineBot.Controllers
@@ -37,20 +40,20 @@ namespace DoubleCraneLineBot.Controllers
             var BotList = LineBot.GetBotList();
             return BotList;
         }
-        [HttpPost]
-        public void WebHookTest(string token, string id, string mess) 
+        [HttpPost("Webhook")]
+        public IActionResult Webhook(WebhookRequestBodyDto body)
         {
-            var bot = new isRock.LineBot.Bot(token);
-            bot.PushMessage(id, mess);
+            _lineBotService.ReceiveWebhook(body);
+            return Ok();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult Broadcast(string messageType, object body)
         {
             Console.WriteLine("Run LibeBotController.Broadcast() Success.");
             // string ss = body.ToString();
             _lineBotService.BroadcastMessageHandler(messageType, body);
             return Ok();
-        }
+        }*/
     }
 }

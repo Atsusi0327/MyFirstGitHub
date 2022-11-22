@@ -12,22 +12,122 @@
         </select>
         <select class="form-select col-auto w-50" id="Sel-Bcst" onchange="MessageType(this)">
             <option value="reset" selected>請選擇廣播類型</option>
-            <option value="text">訊息</option>
+            <option value="text">發送文字訊息給所有聯絡人</option>
+            <option value="audio">發送語音訊息給所有聯絡人</option>
         </select>
     </div>
+
     <div class="container-fluid hide" id="Msg-Content1">
-        <p>說明：LINE並無開放顏文字及貼圖功能，如需使用請至<a href="https://manager.line.biz/">LINE 官網</a>使用。</p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#KaoModal1">
+            😄
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#KaoModal2">
+            ❤
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#KaoModal3">
+            🎁
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#KaoModal4">
+            🏠
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#KaoModal5">
+            #⃣
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="KaoModal1" tabindex="-1" aria-labelledby="KaoModal1Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="KaoModalLabel1">插入表情符號</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="KaoModal1-Body">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="KaoModal2" tabindex="-1" aria-labelledby="KaoModa21Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="KaoModalLabel2">插入表情符號</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="KaoModal2-Body">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="KaoModal3" tabindex="-1" aria-labelledby="KaoModal3Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="KaoModalLabel3">插入表情符號</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="KaoModal3-Body">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="KaoModal4" tabindex="-1" aria-labelledby="KaoModal4Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="KaoModalLabel4">插入表情符號</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="KaoModal4-Body">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="KaoModal5" tabindex="-1" aria-labelledby="KaoModal5Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="KaoModalLabel5">插入表情符號</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="KaoModal5-Body">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="form-floating">
             <textarea class="form-control" style="height:300px" id="Msg-Message-Content"></textarea>
             <label for="floatingTextarea">請輸入廣播內容</label>
         </div>
-        <input class="btn btn-secondary" type="button" id="Msg-Message-Submit" style="width:100%" onclick="SendBroadcast()" value="送出" />
+        <input class="btn btn-secondary" type="button" id="Msg-Message-Submit" style="width:100%" onclick="SendTextBroadcast()" value="送出" />
+    </div>
+    <div class="container-fluid hide" id="Msg-Content2">
+        <p>說明：此語音訊息僅支援.m4a檔案。</p>
+        <div class="input-group col-auto w-100 mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02" accept=".m4a">
+            <button class="btn btn-secondary" for="inputGroupFile02" id="start-btn">錄製</button>
+            <button class="btn btn-secondary disabled" for="inputGroupFile02" id="stop-btn">停止</button>
+            <button class="btn btn-secondary disabled" for="inputGroupFile02" id="play-btn">播放</button>
+        </div>
+        <input class="btn btn-secondary" type="button" id="Msg-Audio-Submit" style="width:100%" onclick="" value="送出" />
     </div>
     <!---------------------------------------------------------------------------------------------------------->
     <script src="~/js/LineBotIndex.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script type="text/javascript">
+        // 網頁讀取時
         $(document).ready(function () {
+            // (待刪除功能)讀取資料庫中的機器人
             $.ajax({
                 type: "POST",
                 url: "/LineBot/GetBotList",
@@ -41,38 +141,124 @@
                 error: function () {
                 }
             });
+            // 讀取表情符號資料表
+            var kao1 = ['😄', '😃', '😊', '😉', '😍', '😘', '😚', '😜', '😝', '😳', '😁', '😔', '😌', '😒', '😞', '😣', '😢', '😂', '😭', '😪', '😥', '😰', '😅', '😓', '😩', '😫', '😨', '😱', '😠', '😡', '😤', '😖', '😆', '😋', '😷', '😎', '😵', '😲', '😈', '👿', '😐', '😶', '😇', '😏', '👲', '👳', '👮', '👷', '💂', '👶', '👦', '👧', '👨', '👩', '👴', '👵', '👱', '👼', '👸', '😺', '😸', '😻', '😽', '😼', '🙀', '😿', '😹', '😾', '👹', '👺', '🙈', '🙉', '🙊', '💀', '👽', '💩', '💤', '💨', '👂', '👀', '👃', '👅', '👄', '👍', '👎', '👌', '👊', '✊', '✌', '👋', '✋', '👐', '👆', '👇', '👉', '👈', '🙌', '🙏', '☝', '👏', '💪', '🚶', '🏃', '💃', '👫', '👪', '💏', '💑', '👯', '🙆', '🙅', '💁', '🙋', '💆', '👰', '🙎', '🙍', '🙇'];
+            var kao2 = ['💛', '💙', '💜', '💚', '❤', '💔', '💗', '💓', '💕', '💖', '💞', '💘', '💌', '💋', '💍', '💎', '👤', '💬', '👣', '✨', '🌟', '💫', '💥', '💢', '💦', '💧', '🌑', '🌓', '🌔', '🌕', '🌛', '🌙', '🌏', '🌋', '🌌', '🌠', '⭐', '☀', '⛅', '☁', '⚡', '☔', '❄', '⛄', '🌀', '🌁', '🌈', '🌊', '📧', '📥', '📤', '✉', '📩', '📨', '📫', '📪', '📮', '📦', '📝', '📄', '📃', '📑', '📊', '📈', '📉', '📜', '📋', '📅', '📆', '📇', '📁', '📂', '✂', '📌', '📎', '✒', '✏', '📏', '📐', '📕', '📗', '📘', '📙', '📓', '📔', '📒', '📚', '📖', '🔖', '📛', '📰', '🐶', '🐺', '🐱', '🐭', '🐹', '🐰', '🐸', '🐯', '🐨', '🐻', '🐷', '🐽', '🐮', '🐗', '🐵', '🐒', '🐴', '🐑', '🐘', '🐼', '🐧', '🐦', '🐤', '🐥', '🐣', '🐔', '🐍', '🐢', '🐛', '🐝', '🐜', '🐞', '🐌', '🐙', '🐚', '🐠', '🐟', '🐬', '🐳', '🐎', '🐲', '🐡', '🐫', '🐩', '🐾', '💐', '🌸', '🌷', '🍀', '🌹', '🌻', '🌺', '🍁', '🍃', '🍂', '🌿', '🌾', '🍄', '🌵', '🌴', '🌰', '🌱', '🌼'];
+            var kao3 = ['☕', '🍵', '🍶', '🍺', '🍻', '🍸', '🍹', '🍷', '🍴', '🍕', '🍔', '🍟', '🍗', '🍖', '🍝', '🍛', '🍤', '🍱', '🍣', '🍥', '🍙', '🍘', '🍚', '🍜', '🍲', '🍢', '🍡', '🍳', '🍞', '🍩', '🍮', '🍦', '🍨', '🍧', '🎂', '🍰', '🍪', '🍫', '🍬', '🍭', '🍯', '🍎', '🍏', '🍊', '🍒', '🍇', '🍉', '🍓', '🍑', '🍈', '🍌', '🍍', '🍠', '🍆', '🍅', '🌽', '🎍', '💝', '🎎', '🎒', '🎓', '🎏', '🎆', '🎇', '🎐', '🎑', '🎃', '👻', '🎅', '🎄', '🎁', '🎋', '🎉', '🎊', '🎈', '🎌', '🔮', '🎥', '📷', '📹', '📼', '💿', '📀', '💽', '💾', '💻', '📱', '☎', '📞', '📟', '📠', '📡', '📺', '📻', '🔊', '🔔', '📢', '📣', '⏳', '⌛', '⏰', '⌚', '🔓', '🔒', '🔏', '🔐', '🔑', '🔎', '💡', '🔦', '🔌', '🔋', '🔍', '🛀', '🚽', '🔧', '🔩', '🔨', '🚪', '🚬', '💣', '🔫', '🔪', '💊', '💉', '💰', '💴', '💵', '💳', '💸', '📲', '🎩', '👑', '👒', '👟', '👞', '👡', '👠', '👢', '👕', '👔', '👚', '👗', '🎽', '👖', '👘', '👙', '💼', '👜', '👝', '👛', '👓', '🎀', '🌂', '💄'];
+            var kao4 = ['🎨', '🎬', '🎤', '🎧', '🎼', '🎵', '🎶', '🎹', '🎻', '🎺', '🎷', '🎸', '👾', '🎮', '🃏', '🎴', '🎲', '🎯', '🏈', '🏀', '⚽', '⚾', '🎾', '🎱', '🎳', '⛳', '🏁', '🏆', '🎿', '🏂', '🏊', '🏄', '🎣', '💇', '💅', '🏠', '🏡', '🏫', '🏢', '🏣', '🏥', '🏦', '🏪', '🏩', '🏨', '💒', '⛪', '🏬', '🌇', '🌆', '🏯', '🏰', '⛺', '🏭', '🗼', '🗾', '🗻', '🌄', '🌅', '🌃', '🗽', '🌉', '🎠', '🎡', '⛲', '🎢', '🚢', '⛵', '🚤', '⚓', '🚀', '✈', '💺', '🚉', '🚄', '🚅', '🚇', '🚃', '🚌', '🚙', '🚗', '🚕', '🚚', '🚨', '🚓', '🚒', '🚑', '🚲', '💈', '🚏', '🎫', '🚥', '⚠', '🚧', '🔰', '⛽', '🏮', '🎰', '♨', '🗿', '🎪', '🎭', '📍', '🚩'];
+            var kao5 = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣', '0⃣', '🔟', '🔢', '#⃣', '🔣', '⬆', '⬇', '⬅', '➡', '🔠', '🔡', '🔤', '↗', '↖', '↘', '↙', '↔', '↕', '◀', '▶', '🔼', '🔽', '↩', '↪', '⏪', '⏩', '⏫', '⏬', '⤵', '⤴', '🆗', '🆕', '🆙', '🆒', '🆓', '🆖', '📶', '🎦', '🈁', '🈯', '🈳', '🈵', '🈴', '🈲', '🉐', '🈹', '🈺', '🈶', '🈚', '🚻', '🚹', '🚺', '🚼', '🚾', '🅿', '♿', '🚭', '🈸', 'Ⓜ', '🉑', '㊙', '㊗', '🆑', '🆘', '🆔', '🚫', '🔞', '⛔', '✳', '❇', '❎', '✅', '✴', '💟', '🆚', '📳', '📴', '🅰', '🅱', '🆎', '🅾', '💠', '➿', '♻', '♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓', '⛎', '🔯', '🏧', '💹', '💲', '💱', '©', '®', '™', '❌', '‼', '⁉', '❗', '❓', '❕', '❔', '⭕', '🔝', '🔚', '🔙', '🔛', '🔜', '🔃', '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚', '✖', '➕', '➖', '➗', '♠', '♥', '♣', '♦', '💮', '💯', '✔', '☑', '🔘', '🔗', '➰', '〰', '〽', '🔱', '◾', '◽', '▪', '▫', '🔺', '🔲', '🔳', '⚫', '⚪', '🔴', '🔵', '🔻', '⬜', '⬛', '🔶', '🔷', '🔸', '🔹'];
+            for (let i = 0; i < kao1.length; i++) {
+                $('#KaoModal1-Body').append("<span style=\"font-size:1.5rem; word-wrap:break-word;\" id=\"Emoji-Span\" onclick=\"EmojiSpanClick(this) \">" + kao1[i] + "</span>");
+            }
+            for (let i = 0; i < kao2.length; i++) {
+                $('#KaoModal2-Body').append("<span style=\"font-size:1.5rem; word-wrap:break-word;\" id=\"Emoji-Span\" onclick=\"EmojiSpanClick(this) \">" + kao2[i] + "</span>");
+            }
+            for (let i = 0; i < kao3.length; i++) {
+                $('#KaoModal3-Body').append("<span style=\"font-size:1.5rem; word-wrap:break-word;\" id=\"Emoji-Span\" onclick=\"EmojiSpanClick(this) \">" + kao3[i] + "</span>");
+            }
+            for (let i = 0; i < kao4.length; i++) {
+                $('#KaoModal4-Body').append("<span style=\"font-size:1.5rem; word-wrap:break-word;\" id=\"Emoji-Span\" onclick=\"EmojiSpanClick(this) \">" + kao4[i] + "</span>");
+            }
+            for (let i = 0; i < kao5.length; i++) {
+                if (i < 11) { $('#KaoModal5-Body').append(" ") }
+                $('#KaoModal5-Body').append("<span style=\"font-size:1.5rem; word-wrap:break-word;\" id=\"Emoji-Span\" onclick=\"EmojiSpanClick(this) \">" + kao5[i] + "</span>");
+            }
         });
         function MessageType(a) {
             switch (a.value) {
                 case 'reset': {
-                     $('#Msg-Content1').css('display','');
-                     break;
-                }
-                case 'text': {
-                     $('#Msg-Content1').show();
-                    console.log('message');
+                    $('#Msg-Content1').css('display', '');
+                    $('#Msg-Content2').css('display', '');
                     break;
                 }
-            } 
-        }
-        function SendBroadcast () {
-            switch ($('#Sel-Bcst').val()) {
-                case 'text' : {
-                    //alert('');
-                    var TextContent = $('#Msg-Message-Content').val().toString();
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/LineBotSet/SendMessage/Broadcast",
-                        //url: "/LineBot/Broadcast",
-                        data: "messageType=" + $('#Sel-Bcst').val(),
-                        dataType: "Json",
-                        processData: true,
-                        success: function () {},
-                        error: function () {}
-                    });
+                case 'text': {
+                    $('#Msg-Content2').css('display', '');
+                    $('#Msg-Content1').show();
+                    break;
+                }
+                case 'audio': {
+                    $('#Msg-Content1').css('display', '');
+                    $('#Msg-Content2').show();
                     break;
                 }
             }
         }
+
+        // 取得編輯位置
+        var input = document.getElementById("Msg-Message-Content");
+        var rangeIndex = null;
+        input.onblur = function () {
+            rangeIndex = this.selectionStart;
+        }
+        // 置入 Emoji
+        function EmojiSpanClick(emoji) {
+            if (rangeIndex) {
+                let oldVaue = input.value;
+                input.value = oldVaue.slice(0, rangeIndex) + emoji.innerText + oldVaue.slice(rangeIndex);
+                rangeIndex = rangeIndex + text.toString().length;
+            } else {
+                input.value += emoji.innerText;
+                rangeIndex = input.value.length;
+            }
+            input.focus();
+            input.setSelectionRange(rangeIndex, rangeIndex)
+        }
+        // 傳送訊息
+        function SendTextBroadcast() {
+            switch ($('#Sel-Bcst').val()) {
+                case 'text': {
+                    var TextSubmit = confirm("警告：您即將傳送文字訊息給所有聯絡人");
+                    if (TextSubmit) {
+                        var TextContent = "{\"Messages\":[{\"Type\":\"text\",\"Text\":\"" + $('#Msg-Message-Content').val().toString() + "\"}]}";
+                        $.ajax({
+                            type: 'POST',
+                            url: '/api/LineBotSet/SendMessage/Broadcast?messageType=' + $('#Sel-Bcst').val(),
+                            data: JSON.stringify(TextContent),
+                            dataType: "Json",
+                            contentType: "application/json",
+                            processData: false,
+                            success: function () { },
+                            error: function () { }
+                        });
+                    }
+                    break;
+                }
+            }
+        }
+
+        const startBtn = document.querySelector('#start-btn');
+        const stopBtn = document.querySelector('#stop-btn');
+        const playBtn = document.querySelector('#play-btn');
+        let mediaRecorder = null;
+        let audioData = [];
+        startBtn.addEventListener('click', () => {
+            navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+                mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+                mediaRecorder.start();
+
+                mediaRecorder.addEventListener('dataavailable', ev => {
+                    audioData.push(ev.data);
+                });
+
+                mediaRecorder.addEventListener('stop', () => {
+                    audioData = new Blob(audioData);
+                });
+            }).catch(info => {
+                alert('無法取得麥克風權限! 錯誤訊息: ' + info);
+            });
+            $('#stop-btn').removeClass('disabled');
+        });
+
+        stopBtn.addEventListener('click', () => {
+            mediaRecorder.stop();
+            $('#play-btn').removeClass('disabled');
+            $('#stop-btn').addClass('disabled');
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (audioData === null) return false;
+            const audio = new Audio(URL.createObjectURL(audioData));
+            audio.play();
+        });
     </script>
 </body>

@@ -1,6 +1,9 @@
 ﻿p {
     color:gray;
 }
+.content-font {
+    color: gray;
+}
 .hide {
     display: none;
 }

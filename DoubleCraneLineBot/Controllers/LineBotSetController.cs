@@ -15,6 +15,7 @@ namespace DoubleCraneLineBot.Controllers
         private readonly LineBotService _lineBotService;
         private readonly RichMenuService _richMenuService;
         private readonly JsonProvider _jsonProvider;
+
         // constructor
         public LineBotSetController()
         {
@@ -31,11 +32,10 @@ namespace DoubleCraneLineBot.Controllers
         }
 
         [HttpPost("SendMessage/Broadcast")]
-        //[HttpPost]
-        public IActionResult Broadcast([Required] string messageType)
+        public IActionResult Broadcast([Required] string messageType, object body)
         {
             Console.WriteLine("Run LibeBotSetController.Broadcast() Success.");
-            //_lineBotService.BroadcastMessageHandler(messageType, body);
+            _lineBotService.BroadcastMessageHandler(messageType, body);
             return Ok();
         }
 
